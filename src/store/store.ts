@@ -1,13 +1,15 @@
 import {configureStore, combineReducers} from "@reduxjs/toolkit";
+import authReducer from "./reducers/authReducer";
 
 
 const rootReducer = combineReducers({
-
+  authReducer
 })
 
-const setupStore = () => {
+export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
+    devTools: true,
     // middleware: (getDefaultMiddleware) => {
     //   getDefaultMiddleware().concat()
     // }

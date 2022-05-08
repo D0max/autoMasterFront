@@ -1,14 +1,15 @@
-import React, {useEffect} from 'react';
-import './App.css';
-import axios from './api';
+import React from 'react';
 import Layout from "./Layout";
+import './App.css';
+import {Provider} from "react-redux";
+import {setupStore} from "./store/store";
 
 function App() {
-  useEffect(() => {
-    axios.post('/auth/login/', {username: '0003', password: '10'}).then((res) => console.log(res))
-  }, [])
+  const store = setupStore()
   return (
-    <Layout/>
+    <Provider store={store}>
+      <Layout/>
+    </Provider>
   );
 }
 
