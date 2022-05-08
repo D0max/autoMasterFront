@@ -1,8 +1,20 @@
 import React from 'react';
 import AuthPage from "./pages/AuthPage";
+import {
+  Routes,
+  Route,
+} from "react-router-dom";
+import { useSelector } from 'react-redux'
+import {RootState} from "./store/store";
+import Home from "./pages/Home";
 
 const Layout = () => {
   const token = localStorage.getItem('token')
+  const loading = useSelector((state: RootState) => state.authReducer.loading)
+
+  React.useEffect(() => {
+
+  }, [loading])
 
   if (!token) {
     return (
@@ -11,12 +23,9 @@ const Layout = () => {
   }
 
   return (
-    <div>
-      <h1>KORINA I LOVE U</h1>
-      Карина моя Жана, как дела, прикалываюсь, не бойся ни кто не увидит это сообщение кроме тебя, у тебя есть только пароли так что ни кто этого не увидит)))
-      <p>А пароли скоро почищу потому что аккаунты тестовые и тут будет грандиозный проект</p>
-      <p>Моя ты какашка</p>
-    </div>
+      <Routes>
+        <Route element={<Home/>} path="/"/>
+      </Routes>
   );
 };
 

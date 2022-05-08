@@ -8,7 +8,6 @@ export const login = createAsyncThunk(
     console.log(auth);
     try {
       const response = await axios.post('/auth/login', auth)
-      console.log(response.data);
       localStorage.setItem('token', response.data.token)
       return response.data
     } catch (e) {

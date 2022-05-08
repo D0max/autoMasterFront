@@ -29,7 +29,7 @@ const authComponents: any = {
 }
 
 export const Context = React.createContext({
-  changePage: (number: number) => {}
+  changePage: (number: number) => {},
 })
 
 const AuthPage = () => {
