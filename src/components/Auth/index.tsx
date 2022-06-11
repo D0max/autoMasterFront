@@ -1,11 +1,11 @@
 import React from 'react';
 import {AuthPadding, TitleAuth, BodyAuth} from './styled'
 import Button from "../UI/Button";
-import {Context} from "../../pages/AuthPage";
+import {AuthContext} from "../../pages/AuthPage";
 
 
 const Auth = () => {
-  const {changePage} = React.useContext(Context)
+  const {changePage} = React.useContext(AuthContext)
   return (
     <AuthPadding>
       <TitleAuth>AUTOMASTER</TitleAuth>
@@ -22,7 +22,7 @@ const Auth = () => {
           size={25}
           color="grey"
           width="100%"
-          onClick={() => console.log(1)}
+          onClick={() => changePage(2)}
         >
           REGISTER
         </Button>
