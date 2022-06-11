@@ -8,6 +8,13 @@ const color: any = {
   grey: {
     color: '#fff',
     background: 'rgba(0, 0, 0, 0.19)',
+  },
+  link: {
+    color: '#fff',
+    background: 'transparent',
+    border: 'none',
+    padding: 0,
+    margin: 0,
   }
 }
 

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {ButtonHTMLAttributes} from "react";
 
 export interface IButton {
   children: React.ReactNode,
@@ -7,3 +7,5 @@ export interface IButton {
   width: string,
   size?: number
 }
+
+export type TButton = React.MouseEvent<HTMLButtonElement>

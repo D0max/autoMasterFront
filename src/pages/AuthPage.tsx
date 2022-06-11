@@ -2,6 +2,8 @@ import React from 'react';
 import styled from "styled-components";
 import Auth from "../components/Auth";
 import Login from "../components/Auth/Login";
+import Registration from "../components/Auth/Registration";
+import ForgotPassword from "../components/Auth/ForgotPassword";
 
 const BackgroundAuth = styled.div`
   position: relative;
@@ -25,10 +27,12 @@ const ContainerAuth = styled.div`
 
 const authComponents: any = {
   0: <Auth/>,
-  1: <Login/>
+  1: <Login/>,
+  2: <Registration/>,
+  3: <ForgotPassword/>
 }
 
-export const Context = React.createContext({
+export const AuthContext = React.createContext({
   changePage: (number: number) => {},
 })
 
@@ -40,13 +44,13 @@ const AuthPage = () => {
   }, [setAuth]);
 
   return (
-    <Context.Provider value={{changePage}}>
+    <AuthContext.Provider value={{changePage}}>
       <BackgroundAuth>
         <ContainerAuth>
           {authComponents[auth]}
         </ContainerAuth>
       </BackgroundAuth>
-    </Context.Provider>
+    </AuthContext.Provider>
   );
 };
 

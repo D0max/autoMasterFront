@@ -5,16 +5,23 @@ import {
   Route,
 } from "react-router-dom";
 import { useSelector } from 'react-redux'
+import PrivateRoute from './components/UI/PrivateRoute'
+
+
 import {RootState} from "./store/store";
-import Home from "./pages/Home";
+import { useGetPersonInfoQuery } from './services/persons';
+import Header from "./components/Headers";
+import { LayoutGrid, LayoutHeader, LayoutFooter, LayoutMain } from './utils/rootStyles';
+import Home from './pages/Home';
+import ProfilePage from "./pages/ProfilePage";
 
 const Layout = () => {
   const token = localStorage.getItem('token')
   const loading = useSelector((state: RootState) => state.authReducer.loading)
+  const { data: person, error, isLoading } = useGetPersonInfoQuery('')
 
-  React.useEffect(() => {
 
-  }, [loading])
+  React.useEffect(() => {}, [loading])
 
   if (!token) {
     return (
@@ -22,10 +29,27 @@ const Layout = () => {
     )
   }
 
+  if (isLoading) return null
+
+
   return (
-      <Routes>
-        <Route element={<Home/>} path="/"/>
-      </Routes>
+    <LayoutGrid>
+      <LayoutHeader>
+        <Header profile={person}/>
+      </LayoutHeader>
+      <LayoutMain>
+        <div>
+          <Routes>
+            <Route element={<Home/>} path="/"/>
+            <Route path="/profile" element={
+              <PrivateRoute isAllowed={person}>
+                <ProfilePage />
+              </PrivateRoute>}/>
+          </Routes>
+        </div>
+      </LayoutMain>
+      <LayoutFooter>@test</LayoutFooter>
+    </LayoutGrid>
   );
 };
 

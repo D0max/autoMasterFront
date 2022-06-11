@@ -13,3 +13,11 @@ export interface IToken {
 export interface IMessage {
   message: string
 };
+
+
+export interface IUserReducer {
+  loading: boolean,
+  errors?: null ,
+  user: {}
+  users: []
+}

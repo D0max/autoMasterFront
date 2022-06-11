@@ -14,6 +14,7 @@ const Button = ({
       width={width}
       color={color}
       onClick={onClick}
+      type="submit"
       style={{fontSize: size}}
     >
       {children}
